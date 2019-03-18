@@ -1,56 +1,70 @@
 <style scoped>
   .typing-block {
+    width:1031px;
     margin: 0 auto;
-    width: 685px;
     position: relative;
   }
+
   .keyboard {
     top: 0;
     left: 0;
   }
+
   .hand {
     position: absolute;
     pointer-events: none;
-    height: 363px;
     top: -10px;
     left: 0px;
     opacity: 0.8;
-    transform: translateX(55px) scale(1.55);
+    transform: translate(87px, 86px) scale(2.2);
   }
 </style>
 
 
 <template>
-  <div class="typing-block">
-    <object data="../assets/keyboard-ansi.svg" type="image/svg+xml" ref="svg" class="keyboard" width="100%"
+  <div class="typing-block" :style="'transform:scale(' + scale + ')'">
+    <object :data="keyboardData" type="image/svg+xml" ref="svg" class="keyboard" width="100%"
             height="100%"></object>
-    <object data="../../../static/hand-both.svg" type="image/svg+xml" ref="hand" class="hand" width="100%"
+    <object :data="handData" type="image/svg+xml" ref="hand" class="hand" width="100%"
             height="100%"></object>
   </div>
 </template>
 
 
 <script>
-
-  import typing from "../../lib/typing"
+  import typing from "../typing.js"
+  import keyboard from '../assets/keyboard-ansi.svg'
+  import hand from '../assets/hand-both.svg'
+  let strokeColor = "#02a8de"
+  let originalColor = "#777777"
 
   export default {
     name: 'vueKeyboard',
     data() {
-      return {}
+      return {
+        keyboardData: keyboard,
+        handData: hand
+      }
+    },
+    props: ['width'],
+    computed: {
+      scale() {
+        return this.width ? (this.width / 1031) : 1;
+      }
     },
     mounted() {
 
       let svg = this.$refs.svg;
       let color = "lightblue"
-      let strokeColor = "#02a8de"
-      let originalColor = "#777777"
+
       let that = this;
-      console.log("typing", typing);
 
-      $(document.body).on("keydown keyup", function (ev) {
-        console.log(`Code : \t${ev.keyCode}`);
-
+      document.body.addEventListener("keydown", this.keydownUpHandler.bind(this));
+      document.body.addEventListener("keyup", this.keydownUpHandler.bind(this));
+    },
+    methods: {
+      keydownUpHandler(ev) {
+        let that = this;
         var items = that.getTextByKeycode(ev.keyCode);
         var list = that.getLineByKeycode(ev.keyCode);
         var k = String.fromCharCode(ev.keyCode).toLowerCase()
@@ -77,10 +91,7 @@
             item.style.stroke = originalColor;
           }
         })
-
-      })
-    },
-    methods: {
+      },
       getLineByKeycode(keyCode) {
         var result = [];
         var svg = this.$refs.svg;
@@ -111,13 +122,17 @@
         var hand = this.$refs.hand
         var item = hand.contentDocument.getElementById(k.toLowerCase())
 
-        item.style.display = "block";
+        if (item) {
+          item.style.display = "block";
+        }
       },
       hideHand(k) {
         var hand = this.$refs.hand
         var item = hand.contentDocument.getElementById(k.toLowerCase())
 
-        item.style.display = "none";
+        if (item) {
+          item.style.display = "none";
+        }
       }
     }
   }
