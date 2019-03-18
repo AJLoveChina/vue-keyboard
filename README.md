@@ -1,18 +1,24 @@
-# vue-keyboard
+# vue-hand-keyboard
 
 > A real hand tapping keyboard
+<img src="screenshot.gif"/> 
 
-## Build Setup
-
+### Install
+The recommended way is using `npm` 
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+npm install vue-hand-keyboard --save 
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### Usage
+In your entry script
+```javascript
+import Vue from 'vue'
+import VueKeyboard from './index.js'
+Vue.use(VueKeyboard);
+```
+
+Then in your `.vue` file
+```vue
+<vue-keyboard :width="600"></vue-keyboard>
+```
+It is done! Really simple to use ? Yes ❤ 
