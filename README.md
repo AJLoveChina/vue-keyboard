@@ -22,3 +22,8 @@ Then in your `.vue` file
 <vue-keyboard :width="600"></vue-keyboard>
 ```
 It is done! Really simple to use ? Yes ❤ 
+
+
+### About license
+Because the svg files are downloding from [typingclub](https://typingclub.com) \
+I have no authority to make this repository MIT 
