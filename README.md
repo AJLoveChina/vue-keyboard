@@ -27,3 +27,6 @@ It is done! Really simple to use ? Yes ❤
 ### About license
 Because the svg files are downloding from [typingclub](https://typingclub.com) \
 I have no authority to make this repository MIT 
+
+### Links
+* [我为什么要做这个vue-hand-keyboard组件(知乎文章)](https://zhuanlan.zhihu.com/p/59911949)
