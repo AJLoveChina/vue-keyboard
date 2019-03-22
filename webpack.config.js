@@ -2,10 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let outputPath = path.resolve(__dirname, './docs')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: outputPath,
     publicPath: './',
     filename: 'build.js'
   },
@@ -79,7 +80,7 @@ if (process.env.NODE_ENV === 'production') {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, './dist/index.html'),
+      filename: path.resolve(outputPath, './index.html'),
       template: 'index.html',
       minify: {
         removeComments: true,

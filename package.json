@@ -1,7 +1,7 @@
 {
   "name": "vue-hand-keyboard",
   "description": "A real hand tapping keyboard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "735267452@qq.com",
   "license": "No License",
   "main": "src/index.js",
