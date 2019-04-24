@@ -14,7 +14,7 @@ npm install vue-hand-keyboard --save
 In your entry script
 ```javascript
 import Vue from 'vue'
-import VueKeyboard from './index.js'
+import VueKeyboard from 'vue-hand-keyboard'
 Vue.use(VueKeyboard);
 ```
 
