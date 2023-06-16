@@ -3,7 +3,7 @@
   "description": "A real hand tapping keyboard",
   "version": "1.0.2",
   "author": "735267452@qq.com",
-  "license": "Anti-996",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
